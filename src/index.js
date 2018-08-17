@@ -1,4 +1,5 @@
 import 'global/util/fastclick'
+import 'global/util/antm-viewport'
 
 import React from 'react'
 import { render, Router } from 'cat-eye'

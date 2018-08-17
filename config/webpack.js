@@ -59,3 +59,9 @@ exports.staticHash = true
 
 // webpack 处理完毕后的回调处理
 exports.done = function () {}
+
+// postcss-pxtorem 参数
+exports.postcssPxtoremOptions = {
+  rootValue: 50,
+  propWhiteList: []
+}
