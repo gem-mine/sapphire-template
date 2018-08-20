@@ -1,10 +1,8 @@
-/**
- * @param {Number} [baseFontSize = 100] - 基础fontSize, 默认100px;
- * @param {Number} [fontscale = 1] - 有的业务希望能放大一定比例的字体;
- */
-;(function viewportInit(baseFontSize, fontscale) {
-  const _baseFontSize = baseFontSize || 100
-  const _fontscale = fontscale || 1
+;(function viewportInit() {
+  // 基础fontSize;
+  const _baseFontSize = 100
+  // 放大一定比例的字体;
+  const _fontscale = 1
 
   const doc = window.document
   const ua = navigator.userAgent
@@ -30,5 +28,4 @@
     `width=device-width,user-scalable=no,initial-scale=${scale},maximum-scale=${scale},minimum-scale=${scale}`
   )
   doc.documentElement.style.fontSize = `${(_baseFontSize / 2) * dpr * _fontscale}px`
-})(100, 1)
-// 开始设置，可以根据业务需求修改参数
+})()
