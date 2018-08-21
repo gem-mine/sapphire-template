@@ -1,4 +1,4 @@
-;(function viewportInit() {
+; (function viewportInit() {
   // 基础fontSize;
   const _baseFontSize = 100
   // 放大一定比例的字体;
@@ -28,4 +28,5 @@
     `width=device-width,user-scalable=no,initial-scale=${scale},maximum-scale=${scale},minimum-scale=${scale}`
   )
   doc.documentElement.style.fontSize = `${(_baseFontSize / 2) * dpr * _fontscale}px`
+  document.documentElement.setAttribute('data-scale', true)
 })()
