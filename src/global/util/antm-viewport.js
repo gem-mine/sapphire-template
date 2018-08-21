@@ -28,5 +28,5 @@
     `width=device-width,user-scalable=no,initial-scale=${scale},maximum-scale=${scale},minimum-scale=${scale}`
   )
   doc.documentElement.style.fontSize = `${(_baseFontSize / 2) * dpr * _fontscale}px`
-  document.documentElement.setAttribute('data-scale', true)
+  doc.documentElement.setAttribute('data-scale', true)
 })()
