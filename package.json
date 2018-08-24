@@ -1,12 +1,12 @@
 {
   "name": "project_name",
-  "version": "0.8.12",
+  "version": "0.8.13",
   "description": "",
   "browserslist": [
     "last 2 versions"
   ],
   "dependencies": {
-    "cat-eye": "next",
+    "cat-eye": "^2.2.4",
     "react-loadable": "^5.3.1"
   },
   "devDependencies": {
