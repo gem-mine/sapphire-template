@@ -13,7 +13,7 @@ module.exports = {
         components: path.resolve(SRC, 'components'),
         styles: path.resolve(SRC, 'styles'),
         global: path.resolve(SRC, 'global'),
-        'fish-mobile': `${SXP_PREFIX}/fish`
+        fish: `${SXP_PREFIX}/fish`
       }
     }
     if (params.extensions) {
