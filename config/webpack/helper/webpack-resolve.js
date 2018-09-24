@@ -1,6 +1,6 @@
 const path = require('path')
 const config = require('../../webpack')
-const { NODE_MODULES, SRC, CONFIG } = require('../constant')
+const { NODE_MODULES, SRC, CONFIG, SXP_PREFIX } = require('../constant')
 
 module.exports = {
   resolve: function () {
@@ -13,7 +13,7 @@ module.exports = {
         components: path.resolve(SRC, 'components'),
         styles: path.resolve(SRC, 'styles'),
         global: path.resolve(SRC, 'global'),
-        'fish-mobile': '@sdp.nd/fish-mobile'
+        'fish-mobile': `${SXP_PREFIX}/fish-mobile`
       }
     }
     if (params.extensions) {
