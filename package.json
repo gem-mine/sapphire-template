@@ -1,6 +1,6 @@
 {
   "name": "project_name",
-  "version": "0.8.12",
+  "version": "0.9.0-dev",
   "description": "",
   "browserslist": [
     "last 2 versions",
