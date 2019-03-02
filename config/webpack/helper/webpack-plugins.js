@@ -128,7 +128,7 @@ module.exports = {
           }
           if (debug && runDetectVersion) {
             runDetectVersion = false
-            // 检测 gem-mine、gem-mine-template、ui 库 是否需要更新
+            // 检测 sapphire、sapphire-template、ui 库 是否需要更新
             detectVerion()
           }
         }

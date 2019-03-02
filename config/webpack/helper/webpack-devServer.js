@@ -1,4 +1,4 @@
-const { log } = require('gem-mine-helper')
+const { log } = require('@gem-mine/sapphire-helper')
 const anyBody = require('body/any')
 const { getIP } = require('./util')
 

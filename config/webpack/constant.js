@@ -1,6 +1,6 @@
 const path = require('path')
 const config = require('../webpack')
-const { CONSTANT } = require('gem-mine-helper')
+const { CONSTANT } = require('@gem-mine/sapphire-helper')
 const { SXP, SXP_PREFIX } = CONSTANT
 
 const ROOT = path.resolve(__dirname, '../../')

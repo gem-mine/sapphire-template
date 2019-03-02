@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs-extra')
 const { clean, copyFileToDist } = require('./file')
-const { execWithProcess, readJSON, log } = require('gem-mine-helper')
+const { execWithProcess, readJSON, log } = require('@gem-mine/sapphire-helper')
 const { join } = require('./util')
 const { BUILD } = require('../constant')
 
