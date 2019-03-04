@@ -20,7 +20,7 @@ exports.preBuild = function () {
   const prebuild = !!process.env.npm_config_prebuild
   const dist = path.resolve(BUILD, 'version.json')
   if (!prebuild && isDev) {
-    if (fs.existsSync(dist) && fs.exists(`${ROOT}/manifest.json`)) {
+    if (fs.existsSync(dist) && fs.existsSync(`${ROOT}/manifest.json`)) {
       flag = false
     }
   }
