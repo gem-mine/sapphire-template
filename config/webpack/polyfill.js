@@ -18,7 +18,6 @@ const config = {
     isDev ? undefined : helper.plugins.uglify(),
     helper.plugins.done(function () {
       copyFileToDist(path.resolve(BUILD, 'polyfill.js'), BUILD, true, cfg.staticHash)
-      copyFileToDist(path.resolve(PUBLIC, 'polyfill-ie8.js'), BUILD, false, cfg.staticHash)
       copyFileToDist(path.resolve(PUBLIC, 'polyfill-promise.js'), BUILD, false, cfg.staticHash)
     })
   )
