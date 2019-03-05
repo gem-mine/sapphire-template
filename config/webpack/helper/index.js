@@ -1,9 +1,9 @@
 const path = require('path')
 const fs = require('fs-extra')
 const { clean, copyFileToDist } = require('./file')
-const { execWithProcess, readJSON, log } = require('gem-mine-helper')
+const { execWithProcess, readJSON, log } = require('@gem-mine/sapphire-helper')
 const { join } = require('./util')
-const { BUILD } = require('../constant')
+const { ROOT, BUILD } = require('../constant')
 
 const output = require('./webpack-output')
 const loaders = require('./webpack-loaders')
@@ -20,7 +20,7 @@ exports.preBuild = function () {
   const prebuild = !!process.env.npm_config_prebuild
   const dist = path.resolve(BUILD, 'version.json')
   if (!prebuild && isDev) {
-    if (fs.existsSync(dist)) {
+    if (fs.existsSync(dist) && fs.existsSync(`${ROOT}/manifest.json`)) {
       flag = false
     }
   }

@@ -1,6 +1,6 @@
 const path = require('path')
 const detect = require('detect-port')
-const { log } = require('gem-mine-helper')
+const { log } = require('@gem-mine/sapphire-helper')
 const { SRC } = require('./constant')
 const { helper, join, preBuild } = require('./helper')
 const custom = require('../webpack')

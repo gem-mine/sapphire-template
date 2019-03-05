@@ -3,10 +3,9 @@ const chalk = require('chalk')
 const {
   printBox,
   checkCliVersion: _checkCliVersion,
-  checkNativeVersion: _checkNativeVersion,
-  checkUIVersion: _checkUIVersion,
-  checkClassicVersion: _checkClassicVersion
-} = require('gem-mine-helper')
+  checkTemplateVersion: _checkTemplateVersion,
+  checkUIVersion: _checkUIVersion
+} = require('@gem-mine/sapphire-helper')
 const { ROOT, GEM_MINE_DOC, GEM_MINE_DOC_VERSION, UI_DOC } = require('../constant')
 const { getConfig } = require('./util')
 
@@ -23,21 +22,21 @@ function checkCliVersion() {
   const { localVersion, remoteVersion } = _checkCliVersion()
   if (localVersion) {
     if (remoteVersion && localVersion !== remoteVersion) {
-      message = `gem-mine 发现新版本 ${chalk.gray(localVersion)} → ${chalk.yellow(
+      message = `sapphire 发现新版本 ${chalk.gray(localVersion)} → ${chalk.yellow(
         remoteVersion
       )}，版本履历：${chalk.green(GEM_MINE_DOC_VERSION)}
-请执行 ${chalk.yellow('npm i -g gem-mine')} 进行更新`
+请执行 ${chalk.yellow('npm i -g @gem-mine/sapphire')} 进行更新`
     }
   } else {
-    message = `gem-mine 未安装，帮助文档：${chalk.green(GEM_MINE_DOC)}
-请执行 ${chalk.yellow('npm i -g gem-mine')} 进行安装`
+    message = `sapphire 未安装，帮助文档：${chalk.green(GEM_MINE_DOC)}
+请执行 ${chalk.yellow('npm i -g @gem-mine/sapphire')} 进行安装`
   }
   return message
 }
 
 async function checkTemplateVersion(context) {
   let message
-  const { localVersion, remoteVersion } = await _checkNativeVersion(context)
+  const { localVersion, remoteVersion } = await _checkTemplateVersion(context)
   if (remoteVersion && localVersion !== remoteVersion) {
     message = `工程代码骨架 发现新版本 ${getLocalVersionTip(localVersion)}${chalk.yellow(
       remoteVersion
@@ -63,24 +62,8 @@ function checkUIVersion(context) {
   return message
 }
 
-async function checkClassicVersion(context) {
-  let message
-  const { classic_git: classicGit } = context
-  if (classicGit) {
-    const { localVersion, remoteVersion, git, branch } = await _checkClassicVersion(context)
-    if (remoteVersion && localVersion !== remoteVersion) {
-      let doc
-      if (git && branch) {
-        doc = `，详情查看：${chalk.green(`${git}/tree/${branch}`)}`
-      }
-      message = `使用的经典代码骨架 发现新版本 ${getLocalVersionTip(localVersion)}${chalk.yellow(remoteVersion)}${doc}`
-    }
-  }
-  return message
-}
-
 module.exports = async function () {
-  const context = getConfig(path.join(ROOT, '.gem-mine'))
+  const context = getConfig(path.join(ROOT, '.sapphire'))
   const prefix = '🚀 '
   let message = ''
   const cliMessage = checkCliVersion()
@@ -90,8 +73,7 @@ module.exports = async function () {
 
   const templateInfo = await checkTemplateVersion(context)
   const uiInfo = checkUIVersion(context)
-  const classicInfo = await checkClassicVersion(context)
-  if (templateInfo || uiInfo || classicInfo) {
+  if (templateInfo || uiInfo) {
     if (cliMessage) {
       message += '\n\n\n'
     }
@@ -101,10 +83,7 @@ module.exports = async function () {
     if (uiInfo) {
       message += `${prefix}${uiInfo}\n`
     }
-    if (classicInfo) {
-      message += `${prefix}${classicInfo}\n`
-    }
-    message += `建议执行 ${chalk.yellow('gem-mine update')} 进行更新`
+    message += `建议执行 ${chalk.yellow('sapphire update')} 进行更新`
   }
 
   if (message) {
