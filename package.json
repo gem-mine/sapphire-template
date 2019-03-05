@@ -7,11 +7,11 @@
     "ie>=9"
   ],
   "dependencies": {
-    "@gem-mine/sapphire-helper": "file:/Users/tomhome/@gem-mine/sapphire-helper",
     "cat-eye": "^2.2.5",
     "react-loadable": "^5.3.1"
   },
   "devDependencies": {
+    "@gem-mine/sapphire-helper": "^1.0.1",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^7.1.2",
