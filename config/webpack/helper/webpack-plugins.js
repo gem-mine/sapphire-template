@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const WebpackMd5Hash = require('webpack-md5-hash')
@@ -81,27 +81,12 @@ module.exports = {
       )
     )
   },
-  uglify: function (sourceMap = false) {
-    return new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        properties: false
-      },
-      output: {
-        quote_keys: true,
-        comments: false
-      },
-      sourceMap
-    })
-  },
   browser: function (url) {
     return new OpenBrowserPlugin({ url })
   },
   extractCss: function () {
-    return new ExtractTextPlugin({
-      filename: `[name]${config.staticHash ? '.[contenthash]' : ''}.css`,
-      allChunks: true,
-      publicPath
+    return new MiniCssExtractPlugin({
+      filename: `[name]${config.staticHash ? '.[contenthash]' : ''}.css`
     })
   },
   analyzer: function () {

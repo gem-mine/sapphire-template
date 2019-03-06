@@ -1,5 +1,5 @@
 const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { join } = require('./util')
 const { getPublicPath } = require('./source-path')
 const config = require('../../webpack')
@@ -7,29 +7,34 @@ const { NODE_MODULES, STYLE, CONFIG } = require('../constant')
 
 const publicPath = getPublicPath(config)
 
-function loadStyle(hot, type, exclude) {
-  const excludes = join(NODE_MODULES, STYLE, exclude)
-  const styleLoader = {
+const styleLoaders = {
+  // style loader，仅在 hot 模式下使用
+  style: {
     loader: 'style-loader'
-  }
-
-  const cssLoader = {
+  },
+  // 抽取 loader，非 hot 模式下使用
+  extract: {
+    loader: MiniCssExtractPlugin.loader,
+    options: {
+      publicPath
+    }
+  },
+  // css loader， 没有 module 处理，对 excludes 规则生效
+  css: {
     loader: 'css-loader'
-  }
-
-  const cssLoaderWithModule = {
+  },
+  // css loader with module，非 excludes 规则下生效
+  cssWithModule: {
     loader: 'css-loader',
     options: {
       modules: true,
       importLoaders: 1,
       localIdentName: '[name]__[local]-[hash:base64:5]'
     }
-  }
+  },
 
-  let thirdLoader
-
-  let reg
-  const postcssLoader = {
+  // postcss loader config
+  postcss: {
     loader: 'postcss-loader',
     options: {
       sourceMap: true,
@@ -37,71 +42,49 @@ function loadStyle(hot, type, exclude) {
         path: path.resolve(CONFIG, 'webpack')
       }
     }
-  }
-  if (type === 'css') {
-    reg = /\.css$/
-  } else {
-    if (type === 'less') {
-      thirdLoader = {
-        loader: 'less-loader',
-        options: {
-          sourceMap: true
-        }
-      }
-      reg = /\.less$/
-    } else if (type === 'sass') {
-      thirdLoader = {
-        loader: 'sass-loader',
-        options: {
-          outputStyle: 'expand',
-          sourceMap: true
-        }
-      }
-      reg = /\.scss$/
+  },
+
+  // sass loader config
+  sass: {
+    loader: 'sass-loader',
+    options: {
+      outputStyle: 'expand',
+      sourceMap: true
+    }
+  },
+
+  // less loader config
+  less: {
+    loader: 'less-loader',
+    options: {
+      sourceMap: true
     }
   }
+}
 
-  const loaders = {
-    exclude: {
-      hot: [styleLoader, cssLoaderWithModule, postcssLoader],
-      extract: [cssLoaderWithModule, postcssLoader]
-    },
-    include: {
-      hot: [styleLoader, cssLoader, postcssLoader],
-      extract: [cssLoader, postcssLoader]
-    }
-  }
-  if (thirdLoader) {
-    loaders.exclude.hot.push(thirdLoader)
-    loaders.exclude.extract.push(thirdLoader)
-    loaders.include.hot.push(thirdLoader)
-    loaders.include.extract.push(thirdLoader)
-  }
-
+function loadStyle(reg, hot, exclude, loader) {
+  const excludes = join(NODE_MODULES, STYLE, exclude)
+  const loaders = []
+  loaders.push(hot ? styleLoaders.style : styleLoaders.extract)
   const result = [
     {
       test: reg,
       exclude: excludes,
-      use: hot
-        ? loaders.exclude.hot
-        : ExtractTextPlugin.extract({
-          fallback: styleLoader,
-          publicPath,
-          use: loaders.exclude.extract
-        })
+      use: loaders.concat(styleLoaders.cssWithModule, styleLoaders.postcss)
     },
     {
       test: reg,
       include: excludes,
-      use: hot
-        ? loaders.include.hot
-        : ExtractTextPlugin.extract({
-          fallback: styleLoader,
-          publicPath,
-          use: loaders.include.extract
-        })
+      use: loaders.concat(styleLoaders.css, styleLoaders.postcss)
     }
   ]
+
+  if (loader) {
+    result.forEach(item => {
+      item.use.push(loader)
+    })
+  }
+
   return result
 }
 
@@ -111,23 +94,21 @@ module.exports = {
       test: /\.jsx?$/,
       exclude: NODE_MODULES
     }
-    let loaders
     if (hot) {
-      loaders = ['cache-loader', 'react-hot-loader/webpack', 'babel-loader?cacheDirectory=true']
+      obj.use = ['cache-loader', 'babel-loader?cacheDirectory=true']
     } else {
-      loaders = ['babel-loader']
+      obj.use = ['babel-loader']
     }
-    obj.use = loaders
     return obj
   },
   css: function (hot, exclude) {
-    return loadStyle(hot, 'css', exclude)
+    return loadStyle(/\.css$/, hot, exclude)
   },
   less: function (hot, exclude) {
-    return loadStyle(hot, 'less', exclude)
+    return loadStyle(/\.less$/, hot, exclude, styleLoaders.less)
   },
   sass: function (hot, exclude) {
-    return loadStyle(hot, 'sass', exclude)
+    return loadStyle(/\.scss$/, hot, exclude, styleLoaders.sass)
   },
   source: function () {
     return [

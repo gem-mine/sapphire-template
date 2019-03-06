@@ -10,8 +10,12 @@ const shouldAnalyzer = !!process.env.npm_config_analyzer
 
 const files = preBuild()
 
+/**
+ * 开发模式下构建
+ */
 const configPromise = new Promise(function (resolve, reject) {
   const config = {
+    mode: 'development',
     entry: {
       main: [path.resolve(SRC, 'index.js')]
     },
@@ -21,7 +25,7 @@ const configPromise = new Promise(function (resolve, reject) {
     devtool: 'cheap-module-eval-source-map',
     cache: true,
     module: {
-      loaders: join(
+      rules: join(
         helper.loaders.babel(isHot),
         helper.loaders.css(isHot, custom.excludeStyleModule),
         helper.loaders.less(isHot, custom.excludeStyleModule),
