@@ -6,7 +6,11 @@ const custom = require('../webpack')
 
 const files = preBuild()
 
+/**
+ * 生产环境下构建
+ */
 const config = {
+  mode: 'production',
   entry: {
     main: path.resolve(SRC, 'index.js')
   },
@@ -14,7 +18,7 @@ const config = {
   devtool: 'source-map',
   resolve: helper.resolve(),
   module: {
-    loaders: join(
+    rules: join(
       helper.loaders.babel(),
       helper.loaders.css(false, custom.excludeStyleModule),
       helper.loaders.less(false, custom.excludeStyleModule),
@@ -31,7 +35,6 @@ const config = {
     helper.plugins.scopeHosting(),
     helper.plugins.dllReference(),
     helper.plugins.extractCss(),
-    helper.plugins.uglify(true),
     helper.plugins.html({
       minify: true,
       files
