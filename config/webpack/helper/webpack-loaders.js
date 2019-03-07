@@ -57,6 +57,7 @@ const styleLoaders = {
   less: {
     loader: 'less-loader',
     options: {
+      javascriptEnabled: true,
       sourceMap: true
     }
   }
