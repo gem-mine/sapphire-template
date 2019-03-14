@@ -1,5 +1,6 @@
 import React from 'react'
-import { actions, getIn, smart } from 'cat-eye'
+import { actions, smart } from '@gem-mine/durex'
+import { getIn } from 'zero-immutable'
 import style from './style'
 
 const Cmp = props => {
