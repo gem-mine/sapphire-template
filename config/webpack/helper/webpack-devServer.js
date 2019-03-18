@@ -29,11 +29,12 @@ module.exports = function (hot, port, params = {}) {
         log.warning(`收到请求 ${message}`)
         console.log('header:', JSON.stringify(req.headers))
         anyBody(req, res, function (err, body) {
-          if (err) {
-            console.log(err)
-          }
           if (['POST', 'PUT', 'DELETE'].indexOf(method) > -1) {
-            console.log('body:', JSON.stringify(body))
+            if (err) {
+              console.log(err)
+            } else {
+              console.log('body:', JSON.stringify(body))
+            }
           }
         })
       }
