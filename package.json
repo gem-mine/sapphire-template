@@ -24,7 +24,7 @@
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
-    "@gem-mine/sapphire-helper": "^1.0.1",
+    "@gem-mine/sapphire-helper": "^1.0.2",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-import": "^1.6.2",
