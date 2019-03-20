@@ -1,6 +1,6 @@
-import ce from '@gem-mine/durex'
+import durex from '@gem-mine/durex'
 
-ce.model({
+durex.model({
   name: 'user',
   state: {},
   reducers: {},
