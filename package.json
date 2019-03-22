@@ -1,6 +1,6 @@
 {
   "name": "project_name",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "",
   "browserslist": [
     "last 2 versions",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-decorators": "^7.4.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.3.4",
