@@ -1,6 +1,6 @@
 {
   "name": "project_name",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "",
   "browserslist": [
     "last 2 versions",
@@ -55,6 +55,7 @@
     "node-sass": "^4.5.3",
     "open-browser-webpack-plugin": "0.0.5",
     "postcss": "^7.0.14",
+    "postcss-calc": "^7.0.1",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
