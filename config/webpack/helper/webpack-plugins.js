@@ -17,7 +17,7 @@ const publicPath = getPublicPath(config)
 
 module.exports = {
   define: function (env, params = {}) {
-    let obj = {
+    const obj = {
       'process.env': {
         NODE_ENV: JSON.stringify(env)
       },

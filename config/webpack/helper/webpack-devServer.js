@@ -7,7 +7,7 @@ const proxy = require('../../proxy')
 const { BUILD } = require('../constant')
 
 module.exports = function (hot, port, params = {}) {
-  let obj = {
+  const obj = {
     contentBase: BUILD,
     host: getIP(),
     port: port,
