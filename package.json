@@ -1,6 +1,6 @@
 {
   "name": "project_name",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "",
   "browserslist": [
     "last 2 versions",
@@ -9,7 +9,7 @@
   "dependencies": {
     "@gem-mine/durex": "^1.1.4",
     "@gem-mine/immutable": "^1.0.0",
-    "@gem-mine/request": "^1.0.4",
+    "@gem-mine/request": "^1.0.5",
     "create-react-class": "^15.6.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
