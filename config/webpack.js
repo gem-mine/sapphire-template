@@ -35,6 +35,13 @@ exports.additional = []
 // 不需要进行样式模块化的文件或目录（node_modules、styles 目录不会进行样式模块化）
 exports.excludeStyleModule = []
 
+// 额外的监听目录，这样不在 webpack 已有监听范围内的目录或文件也会被监听触发重新构建
+// 配置可以参见 https://github.com/pigcan/extra-watch-webpack-plugin
+exports.extraWatch = {
+  dirs: [],
+  files: []
+}
+
 // 是否需要将资源文件名进行 hash 处理（用来解决缓存问题）
 // 某些项目需要固定静态资源文件名（缓存方案自行处理）, 可以将其设置为 false
 // 注意：仅对 npm run build 生效

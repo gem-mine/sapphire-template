@@ -50,6 +50,7 @@ const configPromise = new Promise(function (resolve, reject) {
       helper.plugins.dllReference(),
       helper.plugins.extractCss(),
       helper.plugins.html({ files }, false),
+      helper.plugins.extraWatch(),
 
       custom.plugins,
       helper.plugins.done(null, true, true)

@@ -6,6 +6,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const WebpackMd5Hash = require('webpack-md5-hash')
+const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin')
 const DonePlugin = require('../plugins/done')
 const config = require('../../webpack')
 const { ROOT, BUILD, PUBLIC } = require('../constant')
@@ -90,6 +91,14 @@ module.exports = {
   },
   md5hash: function () {
     return new WebpackMd5Hash()
+  },
+  extraWatch: function () {
+    return new ExtraWatchWebpackPlugin(
+      config.extraWatch || {
+        dirs: [],
+        files: []
+      }
+    )
   },
   done: (function (runDetectVersion) {
     return function (callback, runCommonTask, debug = false) {
