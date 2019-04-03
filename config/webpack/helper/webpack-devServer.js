@@ -9,6 +9,7 @@ const { BUILD } = require('../constant')
 module.exports = function (hot, port, params = {}) {
   const obj = {
     contentBase: BUILD,
+    watchContentBase: true,
     host: getIP(),
     port: port,
     overlay: true,

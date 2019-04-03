@@ -51,6 +51,7 @@ const configPromise = new Promise(function (resolve, reject) {
       helper.plugins.extractCss(),
       helper.plugins.splitCss(),
       helper.plugins.html({ files }, false),
+      helper.plugins.extraWatch(),
 
       custom.plugins,
       helper.plugins.done(null, true, true)
