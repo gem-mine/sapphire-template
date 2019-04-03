@@ -36,6 +36,7 @@ exports.additional = []
 exports.excludeStyleModule = []
 
 // 额外的监听目录，这样不在 webpack 已有监听范围内的目录或文件也会被监听触发重新构建
+// 配置可以参见 https://github.com/pigcan/extra-watch-webpack-plugin
 exports.extraWatch = {
   dirs: [],
   files: []
