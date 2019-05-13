@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes } from '@gem-mine/durex'
+import { Routes } from '@gem-mine/durex-router'
 import Footer from './Footer'
 import Header from './Header'
 import style from './style'

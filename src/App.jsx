@@ -1,5 +1,6 @@
 import React from 'react'
-import { smart, withRouter, Routes } from '@gem-mine/durex'
+import { smart } from '@gem-mine/durex'
+import { withRouter, Routes } from '@gem-mine/durex-router'
 import 'styles/app'
 import { Preload } from 'global/util/async-load'
 
