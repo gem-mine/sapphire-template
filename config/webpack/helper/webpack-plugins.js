@@ -49,7 +49,10 @@ module.exports = {
         staticHash: config.staticHash,
         prefix: publicPath
       },
-      params
+      params,
+      {
+        chunksSortMode: 'none'
+      }
     )
     if (params.minify === true) {
       obj.minify = {

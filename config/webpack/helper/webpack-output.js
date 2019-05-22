@@ -5,7 +5,7 @@ const { getPublicPath } = require('./source-path')
 const publicPath = getPublicPath(config)
 const { MODE } = process.env
 const isDev = MODE === 'dev'
-const SOURCE_IN_HTML_PUBLIC_PATH = isDev ? '' : publicPath
+const SOURCE_IN_HTML_PUBLIC_PATH = isDev ? '/' : publicPath
 
 module.exports = {
   // for dev/production
