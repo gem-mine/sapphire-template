@@ -13,7 +13,7 @@ exports.buildPath = path.resolve(__dirname, '../build')
 
 // 静态资源路径配置
 // 如果配置了 cdn 并且生效，则此路径无效，会使用 cdn 的路径（cd.host + '/' + cdn.params.path）作为 publicPath
-exports.publicPath = './'
+exports.publicPath = '/'
 
 // 加入 vendor 公共包的库
 exports.vendor = []

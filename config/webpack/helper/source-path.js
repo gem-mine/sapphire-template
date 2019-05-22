@@ -13,5 +13,5 @@ exports.getPublicPath = function (config) {
 }
 
 exports.getPublicPathInHTML = function (isDev, publicPath) {
-  return isDev ? '' : publicPath
+  return isDev ? '/' : publicPath
 }

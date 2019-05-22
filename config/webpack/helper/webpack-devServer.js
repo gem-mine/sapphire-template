@@ -13,7 +13,9 @@ module.exports = function (hot, port, params = {}) {
     host: getIP(),
     port: port,
     overlay: true,
-    historyApiFallback: true,
+    historyApiFallback: {
+      index: '/'
+    },
     stats: {
       chunks: false,
       children: false,
