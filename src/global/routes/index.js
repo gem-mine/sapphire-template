@@ -1,4 +1,4 @@
-import { router } from '@gem-mine/durex-router'
+import { router } from '@gem-mine/durex'
 
 // 组件引入
 import NotFound from 'components/common/exception/404'

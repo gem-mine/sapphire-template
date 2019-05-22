@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, urlFor } from '@gem-mine/durex-router'
+import { Link, urlFor } from '@gem-mine/durex'
 import style from './style'
 
 export default props => {

@@ -1,7 +1,6 @@
 import React from 'react'
 import 'global/util/react-patch'
-import { render } from '@gem-mine/durex'
-import { Router } from '@gem-mine/durex-router'
+import { render, Router } from '@gem-mine/durex'
 import { importAll } from 'global/util/sys'
 import 'global/durex'
 import 'global/request'
