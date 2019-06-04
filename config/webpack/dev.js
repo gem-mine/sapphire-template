@@ -29,7 +29,7 @@ const configPromise = new Promise(function (resolve, reject) {
     output: helper.output.hash(),
     resolve: helper.resolve(),
     resolveLoader: helper.resolveLoader(),
-    devtool: 'cheap-module-eval-source-map',
+    // devtool: 'cheap-module-eval-source-map',
     cache: true,
     module: {
       rules: join(

@@ -15,7 +15,7 @@ const config = {
     main: path.resolve(SRC, 'index.js')
   },
   output: helper.output.hash(),
-  devtool: 'source-map',
+  // devtool: 'source-map',
   resolve: helper.resolve(),
   module: {
     rules: join(

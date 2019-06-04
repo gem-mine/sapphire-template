@@ -3,7 +3,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { join } = require('./util')
 const { getPublicPath } = require('./source-path')
 const config = require('../../webpack')
-const { NODE_MODULES, STYLE, CONFIG } = require('../constant')
+const { STYLE, CONFIG } = require('../constant')
+const NODE_MODULES = /node_modules/
 
 const publicPath = getPublicPath(config)
 
