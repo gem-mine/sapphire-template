@@ -22,3 +22,6 @@ coverage
 .cache-loader
 /manifest.json
 .history
+
+yarn.lock
+package-lock.json
