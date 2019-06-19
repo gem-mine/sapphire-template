@@ -15,7 +15,7 @@ process.on('SIGINT', function () {
 const isHot = process.env.npm_config_hot !== ''
 const shouldAnalyzer = !!process.env.npm_config_analyzer
 
-const files = preBuild()
+// const files = preBuild()
 
 /**
  * 开发模式下构建
@@ -50,7 +50,7 @@ const configPromise = new Promise(function (resolve, reject) {
       helper.plugins.dllReference(),
       helper.plugins.extractCss(),
       helper.plugins.splitCss(),
-      helper.plugins.html({ files }, false),
+      // helper.plugins.html({ files }, false),
       helper.plugins.extraWatch(),
 
       custom.plugins,
