@@ -19,16 +19,5 @@ module.exports = {
       },
       params
     )
-  },
-  // for vendor/polyfill
-  lib: function (params = {}) {
-    return Object.assign(
-      {
-        path: BUILD,
-        filename: '[name].js',
-        library: '[name]'
-      },
-      params
-    )
   }
 }

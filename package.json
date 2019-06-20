@@ -77,10 +77,8 @@
     "webpack-md5-hash": "0.0.6"
   },
   "scripts": {
-    "start": "cross-env MODE=dev webpack-dev-server --progress",
-    "build": "cross-env MODE=production webpack",
-    "vendor": "cross-env MODE=vendor webpack",
-    "polyfill": "cross-env MODE=polyfill webpack",
+    "start": "cross-env MODE=dev gms dev",
+    "build": "cross-env MODE=production gms build",
     "lint": "node config/webpack/scripts/lint.js"
   },
   "pre-commit": [

@@ -2,7 +2,7 @@ const path = require('path')
 const detect = require('detect-port')
 const { log } = require('@gem-mine/sapphire-helper')
 const { SRC } = require('./constant')
-const { helper, join, preBuild } = require('./helper')
+const { helper, join } = require('./helper')
 const custom = require('../webpack')
 
 const kill = require('tree-kill')
@@ -14,8 +14,6 @@ process.on('SIGINT', function () {
 
 const isHot = process.env.npm_config_hot !== ''
 const shouldAnalyzer = !!process.env.npm_config_analyzer
-
-// const files = preBuild()
 
 /**
  * 开发模式下构建
@@ -47,10 +45,8 @@ const configPromise = new Promise(function (resolve, reject) {
       }),
       helper.plugins.ignore(/vertx/),
       helper.plugins.scopeHosting(),
-      // helper.plugins.dllReference(),
       helper.plugins.extractCss(),
       helper.plugins.splitCss(),
-      // helper.plugins.html({ files }, false),
       helper.plugins.extraWatch(),
 
       custom.plugins,
