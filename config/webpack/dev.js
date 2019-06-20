@@ -47,7 +47,7 @@ const configPromise = new Promise(function (resolve, reject) {
       }),
       helper.plugins.ignore(/vertx/),
       helper.plugins.scopeHosting(),
-      helper.plugins.dllReference(),
+      // helper.plugins.dllReference(),
       helper.plugins.extractCss(),
       helper.plugins.splitCss(),
       // helper.plugins.html({ files }, false),

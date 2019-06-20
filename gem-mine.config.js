@@ -3,11 +3,13 @@ const configureWebpack = require('./webpack.config')
 
 module.exports = {
   useDll: true,
-  useKoa: false,
   lintOnSave: true,
   hardSource: true,
   bundleAnalyzer: false,
   dllModule: ['react', 'react-dom', 'prop-types', 'create-react-class', '@gem-mine/durex', '@gem-mine/request', '@gem-mine/immutable'],
+  devServer: {
+    progress: true
+  },
   chainWebpack(config) {
     config.entryPoints.delete('index')
     config.output.path(path.resolve('./build'))
@@ -20,16 +22,14 @@ module.exports = {
       config.module.rules.delete(rule)
     })
     const plugins = [
+      'WebpackBar',
       'DefinePlugin',
       'SuccessPlugin',
       'CopyWebpackPlugin',
-      // 'HtmlWebpackPlugin',
       'MiniCssExtractPlugin',
       'CSSSplitWebpackPlugin',
-      // 'HtmlWebpackTagsPlugin',
       'OptimizeCSSAssetsPlugin',
       'HotModuleReplacementPlugin'
-      // 'ScriptExtHtmlWebpackPlugin'
     ]
     plugins.forEach((plugin) => {
       config.plugins.delete(plugin)
