@@ -22,7 +22,6 @@ module.exports = {
       config.module.rules.delete(rule)
     })
     const plugins = [
-      'WebpackBar',
       'DefinePlugin',
       'SuccessPlugin',
       'CopyWebpackPlugin',
@@ -31,6 +30,9 @@ module.exports = {
       'OptimizeCSSAssetsPlugin',
       'HotModuleReplacementPlugin'
     ]
+    if (process.env.mode === 'dev') {
+      plugins.push('WebpackBar')
+    }
     plugins.forEach((plugin) => {
       config.plugins.delete(plugin)
     })
