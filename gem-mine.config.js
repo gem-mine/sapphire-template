@@ -4,7 +4,6 @@ const configureWebpack = require('./webpack.config')
 module.exports = {
   useDll: true,
   lintOnSave: true,
-  hardSource: true,
   bundleAnalyzer: false,
   dllModule: ['react', 'react-dom', 'prop-types', 'create-react-class', '@gem-mine/durex', '@gem-mine/request', '@gem-mine/immutable'],
   devServer: {
