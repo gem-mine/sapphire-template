@@ -18,15 +18,6 @@
   <% for(var index in htmlWebpackPlugin.files.chunks.main.css) { %>
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.chunks.main.css[index] %>"/>
   <% } %>
-  <% if(htmlWebpackPlugin.options.staticHash) { %>
-    <script>if (typeof Symbol !== 'function' || typeof Set !== 'function') { document.write('<script src="<%= htmlWebpackPlugin.options.prefix %>polyfill-<%=htmlWebpackPlugin.options.files.polyfill.hash%>.js"><\/script>'); }</script>
-    <script>if (typeof Promise !== 'function') { document.write('<script src="<%= htmlWebpackPlugin.options.prefix %>polyfill-promise-<%=htmlWebpackPlugin.options.files["polyfill-promise"].hash%>.js"><\/script>'); }</script>
-    <script src="<%= htmlWebpackPlugin.options.prefix %>vendor-<%=htmlWebpackPlugin.options.files.vendor.hash%>.js"></script>
-  <% } else { %>
-    <script>if (typeof Symbol !== 'function' || typeof Set !== 'function') { document.write('<script src="<%= htmlWebpackPlugin.options.prefix %>polyfill.js"><\/script>'); }</script>
-    <script>if (typeof Promise !== 'function') { document.write('<script src="<%= htmlWebpackPlugin.options.prefix %>polyfill-promise.js"><\/script>'); }</script>
-    <script src="<%= htmlWebpackPlugin.options.prefix %>vendor.js"></script>
-  <% } %>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 </body>
 

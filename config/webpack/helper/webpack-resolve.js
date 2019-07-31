@@ -6,7 +6,6 @@ module.exports = {
   resolve: function () {
     const params = config.resolve || {}
     const obj = {
-      modules: [NODE_MODULES],
       extensions: ['.js', '.jsx', '.css', '.less', '.scss'],
       alias: {
         config: CONFIG,

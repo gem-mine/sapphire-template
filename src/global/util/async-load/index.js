@@ -12,7 +12,7 @@ export function asyncLoad(p, preload = true) {
       if (typeof p === 'function') {
         return p()
       } else {
-        return import(`../../../${p}`)
+        return import(/* webpackInclude: /\.(j|t)sx?$/ */`../../../${p}`)
       }
     },
     loading: Loading,

@@ -10,6 +10,7 @@
     "@gem-mine/durex": "^1.1.4",
     "@gem-mine/immutable": "^1.0.0",
     "@gem-mine/request": "^1.0.5",
+    "core-js": "^3.1.4",
     "create-react-class": "^15.6.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
@@ -23,10 +24,10 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.3.4",
-    "@babel/polyfill": "^7.4.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@gem-mine/sapphire-helper": "^1.0.2",
+    "@gem-mine/script": "^1.0.8",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-import": "^1.6.2",
@@ -76,10 +77,8 @@
     "webpack-md5-hash": "0.0.6"
   },
   "scripts": {
-    "start": "cross-env MODE=dev webpack-dev-server --progress",
-    "build": "cross-env MODE=production webpack",
-    "vendor": "cross-env MODE=vendor webpack",
-    "polyfill": "cross-env MODE=polyfill webpack",
+    "start": "cross-env MODE=dev gms dev",
+    "build": "cross-env MODE=production gms build",
     "lint": "node config/webpack/scripts/lint.js"
   },
   "pre-commit": [

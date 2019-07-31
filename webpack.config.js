@@ -1,4 +1,4 @@
-const KEYS = ['dev', 'polyfill', 'vendor', 'production']
+const KEYS = ['dev', 'production']
 const { MODE } = process.env
 if (KEYS.indexOf(MODE) === -1) {
   throw new Error(`config ${MODE} not found`)

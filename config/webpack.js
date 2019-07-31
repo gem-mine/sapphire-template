@@ -15,9 +15,6 @@ exports.buildPath = path.resolve(__dirname, '../build')
 // 如果配置了 cdn 并且生效，则此路径无效，会使用 cdn 的路径（cd.host + '/' + cdn.params.path）作为 publicPath
 exports.publicPath = '/'
 
-// 加入 vendor 公共包的库
-exports.vendor = []
-
 // webpack dev server 默认端口，也可以通过命令行来指定 --port=9000，默认9000（通常不用设置，冲突时会自动使用可用端口）
 // exports.port = 9000
 
@@ -28,7 +25,6 @@ exports.loaders = []
 exports.plugins = []
 
 // 额外需要从 public 目录拷贝到编译后目录的资源（例如一些第三方的lib）
-// 只需要写文件文件名即可，会在 vendor 构造时进行拷贝
 // 引用请自行修改 public/index.html 进行处理
 exports.additional = []
 

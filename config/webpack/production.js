@@ -1,10 +1,8 @@
 const path = require('path')
+const { helper, join } = require('./helper')
 const { SRC, BUILD, CDN } = require('./constant')
-const { helper, preBuild, join } = require('./helper')
 const shouldAnalyzer = !!process.env.npm_config_analyzer
 const custom = require('../webpack')
-
-const files = preBuild()
 
 /**
  * 生产环境下构建
@@ -33,13 +31,8 @@ const config = {
     }),
     helper.plugins.md5hash(),
     helper.plugins.scopeHosting(),
-    helper.plugins.dllReference(),
     helper.plugins.extractCss(),
     helper.plugins.splitCss(),
-    helper.plugins.html({
-      minify: true,
-      files
-    }),
     custom.plugins,
     helper.plugins.done(function () {
       if (CDN) {

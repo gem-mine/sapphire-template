@@ -1,3 +1,4 @@
+import 'core-js/stable'
 import React from 'react'
 import 'global/util/react-patch'
 import { render, Router } from '@gem-mine/durex'
